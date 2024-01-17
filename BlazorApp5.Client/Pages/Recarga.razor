@@ -1,0 +1,29 @@
+﻿@page "/recarga"
+@rendermode InteractiveAuto
+
+<FluentStack style="width: 100%; margin-top:20px; margin-bottom:10px">
+    <FluentCard style="width: 100%;">
+        <FluentTextField @bind-Value=value1 style="width: 100%;" Placeholder="R$0,00"></FluentTextField>
+        <FluentStack style="width: 100%;">
+            <FluentButton style="width: 100%;" @onclick="() => AdicionarValor(30)">
+                R$30,00
+            </FluentButton>
+            <FluentButton style="width: 100%;" @onclick="() => AdicionarValor(50)">
+                R$50,00
+            </FluentButton>
+            <FluentButton style="width: 100%;" @onclick="() => AdicionarValor(100)">
+                R$100,00
+            </FluentButton>
+        </FluentStack>
+    </FluentCard>
+</FluentStack>
+
+@code {
+    string? value1;
+
+    void AdicionarValor(int valor)
+    {
+        value1 = $"R${valor},00";
+        InvokeAsync(StateHasChanged);
+    }
+}
